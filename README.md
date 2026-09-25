@@ -12,7 +12,7 @@ npm run dev
 
 The website will then run on [http://localhost:3000](http://localhost:3000) with your browser to show the result.
 
-Alternatively, you can access the online/deployed version of this website [here]()!
+Alternatively, you can access the online/deployed version of this website [here](https://postit-ashy.vercel.app/)! Please note that the online version may suffer from longer load times either due to slow internet speed or simply due to the performance of the free tier of a Vercel/Aiven-deployed website. The local version is much faster.
 
 
 ## PostIt's Functions
