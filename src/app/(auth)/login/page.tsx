@@ -27,7 +27,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-milkshake">
-      <main className="flex-1 overflow-y-auto bg-marshmallow text-black p-5  sm:mx-16 md:mx-32 lg:mx-50 2xl:mx-150">
+      <main className="flex-1 overflow-y-auto bg-marshmallow text-black p-5  sm:mx-16 md:mx-32 lg:mx-50 2xl:mx-125">
         <div className="text-center">
           <div className="mx-auto flex justify-center w-[350px] h-[350px] rounded-full overflow-hidden bg-white">
             <img
