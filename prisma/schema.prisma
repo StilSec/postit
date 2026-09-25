@@ -1,0 +1,41 @@
+datasource db {
+  provider = "mysql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+  previewFeatures = ["driverAdapters"]
+}
+
+model User {
+  user_id        Int      @id @default(autoincrement())
+  user_username  String
+  user_picture   String
+  posts          Post[]
+  user_createdAt DateTime @default(now())
+}
+
+model Post {
+  post_id        Int      @id @default(autoincrement())
+  post_title     String
+  post_content   String   @db.Text
+  post_summary   String
+  post_thumbnail String   @db.Text
+  author         User     @relation(fields: [author_id], references: [user_id])
+  author_id      Int
+  author_name    String
+  post_createdAt DateTime @default(now())
+  post_updatedAt DateTime @updatedAt
+  comments       Comment[]
+}
+
+model Comment {
+  comment_id        Int       @id @default(autoincrement())
+  post_id           Int
+  comment_content   String    @db.Text
+  post              Post      @relation(fields: [post_id], references: [post_id])
+  author_name       String
+  author_picture    String
+  comment_createdAt    DateTime     @default(now())
+}

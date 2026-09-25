@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Welcome to PostIt
 
-## Getting Started
+Good day! The given application is a simple blog website where users can create, update, delete, and comment on blog posts. To have the application work on your device, please run the following codes below:
 
-First, run the development server:
-
-```bash
+```terminal
+cp .env.example .env
+docker compose up -d
+npm install
+npx prisma generate
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The website will then run on [http://localhost:3000](http://localhost:3000) with your browser to show the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Alternatively, you can access the online/deployed version of this website [here]()!
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## PostIt's Functions
 
-To learn more about Next.js, take a look at the following resources:
+PostIt has the following main functions:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Login - Only users with a username in the database can log in to the website. The following are the currently approved usernames:
+    - scarletsky
+    - DreaminShu
+    - boppinID
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Posts Page - The main page that shows all of the posts in the website. Can be filtered to show only the current user's posts or all posts in the database.
 
-## Deploy on Vercel
+- View Post Details - Can be accessed by clicking on a post card from the dashboard. All users can comment on them, but only the author can edit/delete the post itself.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Add Post - Can be accessed from the dashboard. Creates a new post. The following are constraints during creation:
+    - Title must be 1-50 characters long
+    - Summary must be 1-100 characters long
+    - Content must at least be 1 character long
+    - If Thumbnail URL is invalid, the default thumbnail will be used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Edit Post - Can be accessed on a post's details page by its author. Previous constraints still apply.
+
+- Delete Post - Can be accessed on a post's details page by its author. Also deletes all comments related to the post.
+
+- Add Comment - Adds a comment on the post's details page.
+
+- Delete Comment - Allows the post's author to delete any comment on their post's page.
+
+- Logout - Logs the user out of the website and deletes the current session
