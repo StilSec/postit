@@ -13,7 +13,11 @@ const adapter = new PrismaMariaDb({
   password: dbUrl.password,
   database: dbUrl.pathname.replace(/^\//, ""),
   connectionLimit: 5,
-  ssl: true
+  connectTimeout: 10000,   // was defaulting to 1000ms — too short for Aiven's TLS handshake
+  acquireTimeout: 15000,   // give it a bit more headroom overall too
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 const globalForPrisma = globalThis as unknown as {
