@@ -2,6 +2,8 @@ import "dotenv/config";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 import { PrismaClient } from "../generated/prisma";
 
+console.log(process.env.DATABASE_URL ? 'DB URL present' : 'DB URL MISSING')
+
 const dbUrl = new URL(process.env.DATABASE_URL!);
 
 const adapter = new PrismaMariaDb({
