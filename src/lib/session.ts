@@ -27,14 +27,17 @@ export async function createSession(payload: SessionPayload) {
 
 export async function getSession() {
   const token = (await cookies()).get(COOKIE_NAME)?.value;
-  if (!token) return null;
+  if (!token) {
+    console.log('getSession: no token found in cookies');
+    return null;
+  }
 
   try {
     const { payload } = await jwtVerify(token, SECRET);
-    // <-- FIXED: Now uses the correct SessionPayload type
-    return payload as SessionPayload; 
-  } catch {
-    return null; // expired or tampered
+    return payload as SessionPayload;
+  } catch (err) {
+    console.log('getSession: jwtVerify failed:', err); // <-- expose the real reason
+    return null;
   }
 }
 
