@@ -11,6 +11,9 @@ const adapter = new PrismaMariaDb({
   password: dbUrl.password,
   database: dbUrl.pathname.replace(/^\//, ""),
   connectionLimit: 5,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 const globalForPrisma = globalThis as unknown as {
