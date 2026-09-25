@@ -11,6 +11,10 @@ const adapter = new PrismaMariaDb({
   password: dbUrl.password,
   database: dbUrl.pathname.replace(/^\//, ""),
   connectionLimit: 5,
+  ssl: {
+    ca: fs.readFileSync(process.env.MYSQL_CA_CERT_PATH || "./ca.pem").toString(),
+    rejectUnauthorized: true,
+  },
 });
 
 const globalForPrisma = globalThis as unknown as {
