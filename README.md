@@ -1,6 +1,6 @@
 ## Welcome to PostIt
 
-Good day! The given application is a simple blog website where users can create, update, delete, and comment on blog posts. To have the application work on your device, please run the following codes below:
+Good day! The given application is a simple blog website where users can create, update, delete, and comment on blog posts. To have the application work on your device, please run the following codes below. Please note that to access the database, the [docker tool](https://www.docker.com/products/docker-desktop/) is required.
 
 ```terminal
 cp .env.example .env
